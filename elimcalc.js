@@ -15,6 +15,7 @@ function shuffle(array) {
   
     return array;
   }
+
 function eliminate(contestants,zeropass,hundredpass){
 // create three arrays, one for the players in the competition
 // one for their respective point thresholds
@@ -30,6 +31,7 @@ function eliminate(contestants,zeropass,hundredpass){
         threshold.push(Math.round((hundredpass-((hundredpass-zeropass)/contestants)*i)*1000)/10);
         roundscores.push((100/(contestants-1))*i);
     }
+    console.log(threshold);
 // shuffle roundscores so the next step assigns scores randomly (i could have done this better)
     shuffle(roundscores);
 // now compare each player's score to their threshold-- if it's lower, eliminate them, if it's higher, keep them in
@@ -54,7 +56,7 @@ function eliminate(contestants,zeropass,hundredpass){
 function runAverageRate (iterations){
     let archiveRates = new Array;
     for (let i = 0; i<=iterations; i++){
-        let testCase = eliminate (50,.1,.7);
+        let testCase = eliminate (50,.0,.4);
         archiveRates.push(testCase);
     }
     let rateSum = 0
