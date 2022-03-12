@@ -28,7 +28,7 @@ function eliminate(contestants,zeropass,hundredpass){
     let alive = new Array;
     for (let i = 0; i<contestants; i++){
         players.push(i+1);
-        threshold.push(Math.round((hundredpass-((hundredpass-zeropass)/contestants)*i)*1000)/10);
+        threshold.push((10 + Math.pow(30, (1.08/contestants)*i))); 
         roundscores.push((100/(contestants-1))*i);
     }
     console.log(threshold);
@@ -56,7 +56,7 @@ function eliminate(contestants,zeropass,hundredpass){
 function runAverageRate (iterations){
     let archiveRates = new Array;
     for (let i = 0; i<=iterations; i++){
-        let testCase = eliminate (50,.0,.4);
+        let testCase = eliminate (57,.1,.4);
         archiveRates.push(testCase);
     }
     let rateSum = 0
@@ -65,4 +65,5 @@ function runAverageRate (iterations){
     }
     console.log("The overall average rate for this setup using " + iterations + " iterations was: " + rateSum*100/archiveRates.length + "%");
 }
-runAverageRate (50);
+//runAverageRate (57);
+eliminate(57,.1,.4);
